@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Image, Pagination } from 'react-bootstrap'
+import { Container, Row, Col, Image, Pagination, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import Axios from 'axios'
@@ -11,6 +11,8 @@ import FilterReportComponent from './components/FilterReportComponent';
 import ShowReportComponent from './components/ShowReportComponent'
 import ModalFilter from './components/ModalFilter';
 import ReportPagination from './components/ReportPagination';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function ListReportPage() {
 
@@ -232,6 +234,24 @@ function ListReportPage() {
                         reportType={reportType}
                         incidentObject={incidentObject}
                     />
+
+                    {/* icon add */}
+                    <Button
+                        className='rounded-pill bg-success'
+                        style={{
+                            width: '40px',
+                            position: 'fixed',
+                            right: '10px',
+                            top: '50px',
+                            zIndex: '1',
+                            cursor: 'pointer',
+                            color: 'white',
+                            opacity: '0.8',
+                            padding: '2px 0px'
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faPlus} style={{ fontSize: '30px', fontWeight: 'bold', margin: '0px' }} />
+                    </Button>
 
                     {/* modal filters */}
                     <ModalFilter

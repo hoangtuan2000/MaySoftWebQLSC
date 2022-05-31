@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 
+import ScrollButton from '../src/components/scrollButton/ScrollButton'
 import ListReportPage from './pages/listReportPage/ListReportPage';
 import FollowPage from './pages/followPage/FollowPage'
 import ChartPage from './pages/chartPage/ChartPage'
@@ -15,22 +16,26 @@ import ProtectRoutes from './ProtectRoutes';
 
 function App() {
   return (
-    <BrowserRouter>
-     <Routes>
-     <Route path="/">
-          <Route index element={<LoginPage />} />
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<LoginPage />} />
 
-          {/* protected router */}
-          <Route element={<ProtectRoutes />}>
-            <Route path="listReportPage" element={<ListReportPage />} />
-            <Route path="followPage" element={<FollowPage />} />
-            <Route path="chartPage" element={<ChartPage />} />
-            <Route path="notificationPage" element={<NotificationPage />} />
-            <Route path="accountPage" element={<AccountPage />} />
+            {/* protected router */}
+            <Route element={<ProtectRoutes />}>
+              <Route path="listReportPage" element={<ListReportPage />} />
+              <Route path="followPage" element={<FollowPage />} />
+              <Route path="chartPage" element={<ChartPage />} />
+              <Route path="notificationPage" element={<NotificationPage />} />
+              <Route path="accountPage" element={<AccountPage />} />
+            </Route>
           </Route>
-        </Route>
-     </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+
+      <ScrollButton />
+    </>
   );
 }
 
