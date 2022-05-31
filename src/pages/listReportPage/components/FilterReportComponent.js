@@ -1,9 +1,7 @@
-import { faCalendar, faCalendarAlt, faClose, faFilter, faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faFilter, faInfo } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { Col, Row, Button } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { deleteFilterTime } from '../../../redux/filterReport/filterReportSlice'
+import { Col, Row } from 'react-bootstrap'
 import DateTimeRangePicker from '@wojtekmaj/react-datetimerange-picker'
 
 

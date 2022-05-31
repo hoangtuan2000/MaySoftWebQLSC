@@ -1,8 +1,8 @@
 import React from 'react'
-import { Container, Row, Col, Image, Button } from 'react-bootstrap'
+import { Col, Image, Button } from 'react-bootstrap'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket, faBell, faChartArea, faChartBar, faChartPie, faList, faTv, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightFromBracket, faBell, faChartPie, faList, faTv, faUser } from '@fortawesome/free-solid-svg-icons'
 
 function SideBar() {
 

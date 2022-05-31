@@ -1,10 +1,9 @@
 import React from 'react'
-import { Container, Row, Col, Image, Pagination, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom';
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import Axios from 'axios'
 
-import { createFilterTime, createFilterPage } from '../../redux/filterReport/filterReportSlice'
+import { createFilterPage } from '../../redux/filterReport/filterReportSlice'
 
 import SideBar from '../../components/sidebar/SideBar';
 import FilterReportComponent from './components/FilterReportComponent';
@@ -19,7 +18,7 @@ function ListReportPage() {
     const [auth, setAuth] = React.useState('')
 
     // get data in redux
-    const filterTime = useSelector((state) => state.filterReportRedux.filterTime)
+    // const filterTime = useSelector((state) => state.filterReportRedux.filterTime)
     const filters = useSelector((state) => state.filterReportRedux.filters)
     const dispatch = useDispatch()
 
