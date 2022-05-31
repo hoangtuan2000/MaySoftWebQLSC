@@ -11,7 +11,7 @@ function ReportPagination({ totalReportPages, filters }) {
                 <span>Trang</span>
                 <Pagination>
                     {
-                        totalReportPages.length > 2 && filters.page > 1?
+                        totalReportPages.length > 2 && filters.page > 1 ?
                             <>
                                 <Pagination.First
                                     onClick={() => dispatch(createFilterPage(totalReportPages[0].pageNumber))}
