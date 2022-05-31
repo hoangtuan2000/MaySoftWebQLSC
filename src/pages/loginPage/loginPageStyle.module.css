@@ -1,0 +1,8 @@
+.boxLogin {
+    border-radius: 10px;
+    background-color: #d6d6d6;
+    position: fixed;
+    top: 100px;
+    box-shadow: 17px 19px 40px 5px rgba(0,0,0,0.4);
+    padding: 30px;
+}
