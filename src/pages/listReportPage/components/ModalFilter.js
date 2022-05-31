@@ -3,7 +3,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     createFilterStatus, createFilterType, createFilterIncident,
-    createFilterDepartment, createFilterSearchKey, deleteAllFilters
+    createFilterDepartment, createFilterSearchKey, deleteAllFilters, createFilterPage
 } from '../../../redux/filterReport/filterReportSlice'
 
 function ModalFilter(

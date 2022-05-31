@@ -1,15 +1,16 @@
 import React from 'react'
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image, Pagination } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import Axios from 'axios'
 
-import { createFilterTime } from '../../redux/filterReport/filterReportSlice'
+import { createFilterTime, createFilterPage } from '../../redux/filterReport/filterReportSlice'
 
 import SideBar from '../../components/sidebar/SideBar';
 import FilterReportComponent from './components/FilterReportComponent';
 import ShowReportComponent from './components/ShowReportComponent'
 import ModalFilter from './components/ModalFilter';
+import ReportPagination from './components/ReportPagination';
 
 function ListReportPage() {
 
@@ -21,6 +22,7 @@ function ListReportPage() {
     const dispatch = useDispatch()
 
     const [reports, setReports] = React.useState([])
+    const [totalReportPages, setTotalReportPages] = React.useState([])
     const [filterReports, setFilterReports] = React.useState([])
     const [incidentObject, setIncidentObject] = React.useState([])
     const [departments, setDepartments] = React.useState([])
@@ -34,7 +36,8 @@ function ListReportPage() {
     const getAllReports = () => {
         Axios.post('https://qlsc.maysoft.io/server/api/getAllReports',
             {
-                page: 1
+                page: filters.page,
+                limitEntry: filters.limitEntry
             },
             {
                 headers: {
@@ -43,8 +46,18 @@ function ListReportPage() {
             })
             .then((res) => {
                 if (res.status) {
+                    // setTotalReportPages())
                     setReports(res.data.data.data)
                     setFilterReports(res.data.data.data)
+                    let totalPages = Math.ceil(res.data.data.sizeQuerySnapshot / filters.limitEntry)
+                    let pages = []
+                    for (let i = 1; i <= totalPages; i++) {
+                        let object = {}
+                        object.pageNumber = i
+                        object.pageName = 'Trang ' + i
+                        pages.push(object)
+                    }
+                    setTotalReportPages(pages)
                 }
             })
             .catch((err) => {
@@ -150,11 +163,11 @@ function ListReportPage() {
         ) {
 
             let multiFilters = {
-                page: 1
+                page: filters.page,
+                limitEntry: filters.limitEntry
             }
 
             if (filters.status != '') { multiFilters.status = filters.status }
-
             if (filters.type != '') { multiFilters.reportType = filters.type }
             if (filters.incident != '') { multiFilters.incidentObject = filters.incident }
             if (filters.department != '') { multiFilters.departmentId = filters.department }
@@ -193,6 +206,12 @@ function ListReportPage() {
                         setSelectRangeDate={setSelectRangeDate}
                         selectRangeDate={selectRangeDate}
                         setShowModalFilter={setShowModalFilter}
+                    />
+
+                    {/* pages */}
+                    <ReportPagination
+                        totalReportPages={totalReportPages}
+                        filters={filters}
                     />
 
                     {/* view show report */}
