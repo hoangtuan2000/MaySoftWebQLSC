@@ -163,7 +163,7 @@ function ListReportPage() {
         ) {
 
             let multiFilters = {
-                page: filters.page,
+                page: 1,
                 limitEntry: filters.limitEntry
             }
 
@@ -182,6 +182,17 @@ function ListReportPage() {
                 })
                 .then((res) => {
                     setReports(res.data.data.data)
+                    // update total pages when filters
+                    let totalPages = Math.ceil(res.data.data.sizeQuerySnapshot / filters.limitEntry)
+                    let pages = []
+                    for (let i = 1; i <= totalPages; i++) {
+                        let object = {}
+                        object.pageNumber = i
+                        object.pageName = 'Trang ' + i
+                        pages.push(object)
+                    }
+                    setTotalReportPages(pages)
+                    dispatch(createFilterPage(1))
                 })
                 .catch((err) => {
                     console.log('err', err);
